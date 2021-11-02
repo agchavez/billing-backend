@@ -11,7 +11,7 @@ env = environ.Env()
 DEBUG = env.bool('DJANGO_DEBUG', False)
 
 # Language and timezone
-TIME_ZONE = 'America/Honduras'
+TIME_ZONE = 'America/Mexico_City'
 LANGUAGE_CODE = 'es-hn'
 SITE_ID = 1
 USE_I18N = True
@@ -41,8 +41,11 @@ DJANGO_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
+    'rest_framework',
+    'rest_framework.authtoken',
 ]
 LOCAL_APPS = [
+    'billing.user.apps.UserAppConfig'
 ]
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
