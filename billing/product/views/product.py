@@ -21,6 +21,7 @@ class ProductViewSet(mixins.CreateModelMixin,
     def perform_destroy(self, instance):
         instance.status = False
         instance.save()
+        
     def perform_retrive(self, instance):
         if instance.status:
             return Response({
