@@ -13,6 +13,7 @@ class Client(BaseModel):
                     help_text='Nmbre del cliente o empresa')
     rtn  = models.CharField(
                     'RTN', 
+                    unique=True,
                     max_length=16, 
                     help_text='RTN de la empresa' )
     def __str__(self):
