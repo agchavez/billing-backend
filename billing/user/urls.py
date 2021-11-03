@@ -1,5 +1,4 @@
 from django.urls import include, path
-from django.urls.conf import include
 from billing.user.views.seller import SellerLoginAPIView
 
 from rest_framework.routers import DefaultRouter
