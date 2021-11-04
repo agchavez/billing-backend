@@ -11,7 +11,7 @@ env = environ.Env()
 DEBUG = env.bool('DJANGO_DEBUG', False)
 
 # Language and timezone
-TIME_ZONE = 'America/Honduras'
+TIME_ZONE = 'America/Mexico_City'
 LANGUAGE_CODE = 'es-hn'
 SITE_ID = 1
 USE_I18N = True
@@ -41,8 +41,13 @@ DJANGO_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
+    'rest_framework',
+    'rest_framework.authtoken',
 ]
 LOCAL_APPS = [
+    'billing.user.apps.UserAppConfig',
+    'billing.product.apps.ProductAppConfig',
+    'billing.invoice.apps.InvoiceAppConfig',
 ]
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
@@ -149,3 +154,15 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERYD_TASK_TIME_LIMIT = 5 * 60
 CELERYD_TASK_SOFT_TIME_LIMIT = 60
+
+# Django REST Framework
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+    ),
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 10,
+}
+
+# Django CROS
+CORS_ORIGIN_WHITELIST = env.list('DJANGO_CORS_ORIGIN', default=[])
