@@ -14,4 +14,4 @@ class Invoices(BaseModel):
     discount    = models.ForeignKey(Discount,on_delete=models.CASCADE, blank=True, null=True, related_name='invoicesdicount')
     status      = models.BooleanField('Estado', default=True)
     def __str__(self) :
-        return self.total
+        return str(self.total)
