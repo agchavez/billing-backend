@@ -10,18 +10,19 @@ class InvoiceDetailViewSet(mixins.CreateModelMixin,
                     mixins.RetrieveModelMixin,
                     mixins.UpdateModelMixin,
                     mixins.ListModelMixin,
+                     mixins.DestroyModelMixin,
                     viewsets.GenericViewSet):
     serializer_class = InvoiceDetailModelSerializer
     queryset  = InvoicesDetail.objects.all()
-    lookup_field = ('invoice')
+    lookup_field = ('id')
     
-    def retrieve(self, request, invoice=None):
-        try:
-            invoice_details = InvoicesDetail.objects.filter(invoice=invoice)
-        except:
-            Response({'msg':"No se tiene  registros de  la factura %s" % invoice},  status=status.HTTP_400_BAD_REQUEST)
-        invoicedata  = InvoiceDetailModelSerializer(invoice_details, many=True)
+    # def retrieve(self, request, invoice=None):
+    #     try:
+    #         invoice_details = InvoicesDetail.objects.filter(invoice=invoice)
+    #     except:
+    #         Response({'msg':"No se tiene  registros de  la factura %s" % invoice},  status=status.HTTP_400_BAD_REQUEST)
+    #     invoicedata  = InvoiceDetailModelSerializer(invoice_details, many=True)
         
-        if invoice_details.count() == 0:
-            return Response({'msg':"No se tiene  registros de  la factura %s" % invoice},  status=status.HTTP_400_BAD_REQUEST)
-        return Response(invoicedata.data,  status=status.HTTP_200_OK)
+    #     if invoice_details.count() == 0:
+    #         return Response({'msg':"No se tiene  registros de  la factura %s" % invoice},  status=status.HTTP_400_BAD_REQUEST)
+    #     return Response(invoicedata.data,  status=status.HTTP_200_OK)
