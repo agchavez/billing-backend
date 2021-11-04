@@ -47,6 +47,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     'billing.user.apps.UserAppConfig',
     'billing.product.apps.ProductAppConfig',
+    'billing.invoice.apps.InvoiceAppConfig',
 ]
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
