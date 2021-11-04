@@ -11,7 +11,7 @@ class InvoiceDetailModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = InvoicesDetail
         fields = (
-            'id','total_line', 'product', 'amount'
+            'id','total_line','invoice', 'product', 'amount'
         )
-        
+
     

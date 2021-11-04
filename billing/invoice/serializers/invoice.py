@@ -9,11 +9,11 @@ from billing.invoice.models import Invoices
 from  billing.user.serializers import ClienteModelSerializer
 
 class InvoiceModelSerializer(serializers.ModelSerializer):
-    invoices = InvoiceDetailModelSerializer(many=True, read_only=True)
+    invoice_detail = InvoiceDetailModelSerializer(many=True, read_only=True)
     class Meta:
         model = Invoices
         fields = [
-            'id','total','invoices', 'client', 'seller', 'isv', 'discount', 'status','created'
+            'id','total','invoice_detail', 'client', 'seller', 'isv', 'discount', 'status','created'
         ]
         
     

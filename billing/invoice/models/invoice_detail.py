@@ -7,9 +7,9 @@ from .invoice import Invoices
 
 class InvoicesDetail(BaseModel):
 
-    total_line  = models.BigIntegerField('Total factura: ')
+    total_line  = models.FloatField('Total factura: ')
     product      = models.ForeignKey(Product,  on_delete=models.CASCADE, blank=True, null=True, related_name='products')
-    invoice      = models.ForeignKey(Invoices,on_delete=models.CASCADE, related_name='invoices')
+    invoice      = models.ForeignKey(Invoices,on_delete=models.CASCADE, related_name='invoice_detail')
     amount      = models.IntegerField('cantidad')
 
 
