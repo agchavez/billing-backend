@@ -38,6 +38,7 @@ DJANGO_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
+    'corsheaders'
 ]
 
 THIRD_PARTY_APPS = [
@@ -77,12 +78,15 @@ AUTH_PASSWORD_VALIDATORS = [
 # Middlewares
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'billing.utils.middleware.CustomCorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 # Static files
@@ -166,3 +170,5 @@ REST_FRAMEWORK = {
 
 # Django CROS
 CORS_ORIGIN_WHITELIST = env.list('DJANGO_CORS_ORIGIN', default=[])
+CORS_ALLOW_ALL_ORIGINS = True # If this is used then `CORS_ALLOWED_ORIGINS` will not have any effect
+CORS_ALLOW_CREDENTIALS = True
