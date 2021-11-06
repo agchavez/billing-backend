@@ -16,7 +16,7 @@ class ProductViewSet(mixins.CreateModelMixin,
     
     serializer_class = ProductModelSerializer
     queryset  = Product.objects.filter(status = True)
-    lookup_fields = ('code','id')
+    lookup_field = ('code')
 
     def perform_destroy(self, instance):
         instance.status = False
