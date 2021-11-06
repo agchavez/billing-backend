@@ -16,7 +16,7 @@ class ClientViewSet(mixins.CreateModelMixin,
     
     serializer_class = ClienteModelSerializer
     queryset  = Client.objects.all()
-    lookup_fields = ('rtn','id')
+    lookup_field = ('rtn')
     def get_permissions(self):
         permissions = [SellerToken]
         return [permission() for permission in permissions]
